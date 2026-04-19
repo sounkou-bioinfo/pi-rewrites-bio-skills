@@ -20,6 +20,7 @@ pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.1.0
 - `library-first-bio-rewrites`
 - `bioinformatics-ffi-and-bindings`
 - `bioinformatics-single-pass-analytics`
+- `genomics-sql-rewrites`
 
 ## When to use `bioinformatics-rewrite-porting`
 
@@ -57,14 +58,25 @@ Load this skill when you are:
 - emitting multiple validated outputs from one traversal
 - adding richer per-bin or per-interval statistics without losing semantic clarity
 
+## When to use `genomics-sql-rewrites`
+
+Load this skill when you are:
+
+- designing genomics capabilities as DuckDB extensions or SQL-native kernels
+- thinking through threading models for readers and analytics
+- evaluating alternative metadata formats, caches, or indexes
+- turning classic genomics tools into queryable primitives
+- exploring directions inspired by `duckhts`, `plinking_duck`, `fastVEP`, or `RustQC`
+
 ## Worked example direction
 
-A good example of the library-first approach is the kind of work done in `duckhts`:
+A good example of the library-first approach is the kind of work done in `duckhts` and the adjacent direction suggested by `plinking_duck`:
 
 - reuse a battle-tested native library rather than replacing it wholesale
 - expose it through a new host runtime
 - make the capability available across multiple languages through that host
 - enrich one-pass analytics with additional validated statistics instead of stacking more pipeline passes
+- think seriously about threading models, metadata companions, file formats, and indexes as part of the architecture
 
 ## Update
 

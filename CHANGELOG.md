@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0
+
+- add `genomics-sql-rewrites` skill
+- add genomics SQL / DuckDB design guidance covering threading models, file formats, indexes, and queryable rewrite targets
+- add reference directions from `duckhts`, `plinking_duck`, `fastVEP`, and `RustQC`
+
 ## v0.2.0
 
 - add `bioinformatics-single-pass-analytics` skill
