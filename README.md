@@ -21,6 +21,8 @@ pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.1.0
 - `bioinformatics-ffi-and-bindings`
 - `bioinformatics-single-pass-analytics`
 - `genomics-sql-rewrites`
+- `duckqc-design`
+- `duckvep-design`
 
 ## When to use `bioinformatics-rewrite-porting`
 
@@ -68,6 +70,23 @@ Load this skill when you are:
 - turning classic genomics tools into queryable primitives
 - exploring directions inspired by `duckhts`, `plinking_duck`, `fastVEP`, or `RustQC`
 
+## When to use `duckqc-design`
+
+Load this skill when you are:
+
+- planning a DuckDB-native QC system inspired by RustQC-style one-pass QC
+- deciding which QC outputs should be tables versus compatibility reports
+- designing shared accumulators and reductions across multiple QC metrics
+
+## When to use `duckvep-design`
+
+Load this skill when you are:
+
+- planning a DuckDB-native variant effect prediction system
+- evaluating a `bcftools csq`-aligned path for haplotype-aware consequences
+- thinking through transcript/reference caches and annotation indexes carefully
+- deciding what should be SQL-native consequence kernels versus compatibility projections
+
 ## Worked example direction
 
 A good example of the library-first approach is the kind of work done in `duckhts` and the adjacent direction suggested by `plinking_duck`:
@@ -95,5 +114,5 @@ pi update git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills
 If pinned, move explicitly to the current release:
 
 ```bash
-pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.2.0
+pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.4.0
 ```

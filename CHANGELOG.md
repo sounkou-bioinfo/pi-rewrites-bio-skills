@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.0
+
+- add `duckqc-design` skill
+- add `duckvep-design` skill
+- expand the genomics SQL umbrella with DuckQC-style one-pass QC planning and DuckVEP-style consequence-engine planning
+- add explicit discussion of `bcftools csq`-aligned, haplotype-aware design paths and careful cache/index planning
+
 ## v0.3.0
 
 - add `genomics-sql-rewrites` skill
