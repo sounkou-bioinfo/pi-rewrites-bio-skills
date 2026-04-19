@@ -166,6 +166,15 @@ A likely good shape is layered:
 4. SQL wrappers/macros for user-facing workflows
 5. optional compatibility projection to VEP-like CSQ fields
 
+Also separate clearly between:
+
+- exact-key annotation sources
+- interval-overlap annotation sources
+- track/window sources
+- computed sources such as CSQ/HGVS
+
+Do not force all annotation sources into one physical format or one execution strategy.
+
 ## Output contract questions
 
 Decide early whether DuckVEP wants to optimize for:
@@ -179,6 +188,13 @@ Likely best answer:
 - keep a compatibility projection for familiar workflows
 - also expose more structured SQL-native consequence tables
 
+In practice, a many-source system often needs multiple output layers:
+
+- variant-level exact annotations
+- transcript-level consequences
+- interval-overlap outputs
+- optional final wide or nested projection for users
+
 ## Suggested phased roadmap
 
 ### Phase 1: feasibility / architecture
@@ -187,6 +203,7 @@ Likely best answer:
 - audit which parts can be reused via htslib/bcftools today
 - prototype transcript/reference/cache loading in DuckDB context
 - define SQL-visible input/output shapes
+- define a source registry and source classes for multi-source annotation
 
 ### Phase 2: minimal consequence path
 
@@ -201,6 +218,8 @@ Likely best answer:
 - efficient reference access
 - annotation side stores
 - startup amortization and benchmarked throughput
+- shared preparation of input variants: normalized contigs, packed exact keys, chunk/bin routing
+- batch exact sources around shared keys and interval sources around shared span planning
 
 ### Phase 4: richer annotation ecosystem
 
@@ -219,8 +238,18 @@ Start by asking:
 - what can `bcftools csq` already do for haplotype-aware semantics?
 - what should DuckDB add that upstream tools do not provide well?
 - where do SQL-native decomposition and queryability create unique value?
+- how should many annotation sources be federated instead of flattened into one giant physical store?
 
 That may lead to a much stronger DuckVEP.
+
+A good early design is:
+
+- source registry
+- shared prepared-variant stage
+- exact-source adapters
+- interval-source adapters
+- consequence/reference/transcript kernels loaded once per stage
+- wide or nested user output only as a final projection
 
 ## Related skills
 
@@ -233,3 +262,4 @@ That may lead to a much stronger DuckVEP.
 - [DuckVEP architecture questions](references/architecture-questions.md)
 - [Cache and index planning](references/cache-and-index-planning.md)
 - [Haplotype-aware design notes](references/haplotype-aware-design-notes.md)
+- [Multi-source annotation planning](references/multi-source-annotation-planning.md)

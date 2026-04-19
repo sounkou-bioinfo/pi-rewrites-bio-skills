@@ -114,6 +114,17 @@ Good genomics SQL systems often depend on careful indexing of:
 
 Index design can matter more than language choice.
 
+But in DuckDB, ask first what the engine already gives you:
+
+- columnar storage
+- row-group pruning
+- predicate/projection pushdown
+- vectorized execution
+- persistent ART indexes
+- expression indexes
+
+Do not jump straight to a custom genomics serving format. First test whether a planner-friendly schema plus DuckDB-native indexing already solves enough of the workload.
+
 ### 7) One-pass enriched analytics are often the big win
 
 If one traversal can produce:
@@ -205,6 +216,13 @@ For lookup-heavy annotation systems, chunked binary formats with:
 
 can matter more than raw parser speed.
 
+But treat them as a later optimization stage after trying:
+
+- DuckDB-native tables
+- chunk metadata columns
+- planner-friendly predicates
+- ART or expression indexes on hot exact-key paths
+
 ## Worked directions from reference repos
 
 ### `plinking_duck`
@@ -269,10 +287,12 @@ This suggests a possible DuckDB-inspired direction such as a future “DuckQC”
 2. define whether it is a reader, kernel, or compatibility wrapper
 3. define the threading model early
 4. define file format and index strategy early
-5. implement the smallest streaming slice
-6. validate on real data
-7. benchmark against both upstream tools and naïve multi-pass baselines
-8. add richer outputs only when semantics stay explicit
+5. start with planner-friendly DuckDB-native tables and query shapes
+6. test ART or expression indexes on true hot exact-key paths
+7. add chunked payloads or specialized kernels only if profiling still shows need
+8. validate on real data
+9. benchmark against both upstream tools and naïve multi-pass baselines
+10. add richer outputs only when semantics stay explicit
 
 ## Related skills
 
@@ -285,4 +305,5 @@ This suggests a possible DuckDB-inspired direction such as a future “DuckQC”
 
 - [Threading and scan models](references/threading-and-scan-models.md)
 - [Formats and index strategy](references/formats-and-index-strategy.md)
+- [DuckDB index planning](references/duckdb-index-planning.md)
 - [fastVEP notes](references/fastvep-notes.md)

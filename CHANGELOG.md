@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.6.0
+
+- expand `genomics-sql-rewrites` with DuckDB-first planning guidance, including ART/expression-index considerations before custom serving formats
+- expand `duckvep-design` with multi-source annotation planning, staged/federated execution, and structured output layering
+- expand `bioinformatics-cache-and-index-design` with explicit exact-key versus interval-overlap guidance and DuckDB-native indexing considerations
+- add reference notes for DuckDB index planning, multi-source annotation planning, and interval-vs-exact lookup design
+
 ## v0.5.0
 
 - add `bioinformatics-cache-and-index-design` skill

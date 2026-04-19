@@ -70,6 +70,7 @@ Load this skill when you are:
 - evaluating alternative metadata formats, caches, or indexes
 - turning classic genomics tools into queryable primitives
 - exploring directions inspired by `duckhts`, `plinking_duck`, `fastVEP`, or `RustQC`
+- deciding how far DuckDB-native storage, planning, and ART/expression indexes can take you before custom serving formats are needed
 
 ## When to use `duckqc-design`
 
@@ -87,6 +88,7 @@ Load this skill when you are:
 - evaluating a `bcftools csq`-aligned path for haplotype-aware consequences
 - thinking through transcript/reference caches and annotation indexes carefully
 - deciding what should be SQL-native consequence kernels versus compatibility projections
+- planning how many annotation sources should be federated and staged rather than forced into one physical layout
 
 ## When to use `bioinformatics-cache-and-index-design`
 
@@ -96,6 +98,7 @@ Load this skill when you are:
 - designing transcript, annotation, reference, or interval indexes
 - planning cache provenance, invalidation, and regeneration
 - evaluating innovative high-performance structures such as `echtvar` versus more standard storage choices
+- separating exact-key lookup problems from interval-overlap problems
 
 ## Worked example direction
 
@@ -124,5 +127,5 @@ pi update git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills
 If pinned, move explicitly to the current release:
 
 ```bash
-pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.5.0
+pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.6.0
 ```

@@ -59,6 +59,16 @@ Typical mainstream choices:
 - `DuckDB tables` for repeatedly queried annotation/summary data in SQL-native systems
 - `SQLite` for portable embedded relational metadata stores when SQL is enough
 
+For DuckDB specifically, remember that the engine already offers a lot:
+
+- columnar storage
+- row-group statistics and pruning
+- predicate/projection pushdown
+- persistent ART indexes
+- expression indexes
+
+So first ask whether a planner-friendly DuckDB schema already solves enough of the workload before inventing a new serving format.
+
 Advantages:
 
 - existing ecosystem tools
@@ -213,6 +223,7 @@ Use when:
 - the system is already SQL-native
 - users benefit from joins, filtering, and ad hoc exploration
 - metadata companions should be immediately queryable
+- you want the planner to help with chunk/span pruning before a specialized kernel runs
 
 ### SQLite
 
@@ -232,6 +243,7 @@ Consider:
 - derived binary transcript cache for repeated use
 - interval indexes for exon/CDS/UTR/splice lookup
 - optional SQL-visible table projection for debugging and ad hoc analysis
+- DuckDB chunk/span pruning to narrow candidates before interval-kernel refinement
 
 ### For supplementary annotation databases
 
@@ -256,6 +268,7 @@ Potential options in increasing specialization:
 
 - VCF/BCF + tabix/CSI
 - Parquet or DuckDB side tables
+- DuckDB exact-key tables with ART or expression indexes on hot lookup keys
 - specialized archives like `echtvar` when repeated high-throughput annotation demands it
 
 ## Cache invalidation, provenance, and compatibility
@@ -284,6 +297,7 @@ Avoid:
 - confusing an exchange format with a serving format
 - forcing custom formats when Parquet / BCF / SQLite / DuckDB tables would suffice
 - assuming the “fastest benchmark” format is best if it harms maintainability badly
+- assuming one index structure should handle exact-key and interval-overlap workloads equally well
 
 ## Practical rule of thumb
 
@@ -306,4 +320,5 @@ Move to specialized caches only when you can say clearly:
 
 - [Mainstream vs specialized formats](references/mainstream-vs-specialized-formats.md)
 - [Echtvar notes](references/echtvar-notes.md)
+- [Interval vs exact lookups](references/interval-vs-exact-lookups.md)
 - [Cache provenance checklist](references/cache-provenance-checklist.md)
