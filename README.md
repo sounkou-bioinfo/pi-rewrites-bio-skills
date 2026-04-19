@@ -23,6 +23,7 @@ pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.1.0
 - `genomics-sql-rewrites`
 - `duckqc-design`
 - `duckvep-design`
+- `bioinformatics-cache-and-index-design`
 
 ## When to use `bioinformatics-rewrite-porting`
 
@@ -87,6 +88,15 @@ Load this skill when you are:
 - thinking through transcript/reference caches and annotation indexes carefully
 - deciding what should be SQL-native consequence kernels versus compatibility projections
 
+## When to use `bioinformatics-cache-and-index-design`
+
+Load this skill when you are:
+
+- deciding between mainstream interoperable formats and specialized caches
+- designing transcript, annotation, reference, or interval indexes
+- planning cache provenance, invalidation, and regeneration
+- evaluating innovative high-performance structures such as `echtvar` versus more standard storage choices
+
 ## Worked example direction
 
 A good example of the library-first approach is the kind of work done in `duckhts` and the adjacent direction suggested by `plinking_duck`:
@@ -114,5 +124,5 @@ pi update git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills
 If pinned, move explicitly to the current release:
 
 ```bash
-pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.4.0
+pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.5.0
 ```

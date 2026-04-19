@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.0
+
+- add `bioinformatics-cache-and-index-design` skill
+- add guidance for choosing between mainstream interoperable formats and specialized annotation-serving caches
+- add notes on provenance, regeneration, and invalidation for generated caches
+- add `echtvar` as a concrete reference for innovative genome-chunked annotation indexing and compressed serving formats
+
 ## v0.4.0
 
 - add `duckqc-design` skill
