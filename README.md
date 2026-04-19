@@ -19,6 +19,7 @@ pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.1.0
 - `bioinformatics-rewrite-porting`
 - `library-first-bio-rewrites`
 - `bioinformatics-ffi-and-bindings`
+- `bioinformatics-single-pass-analytics`
 
 ## When to use `bioinformatics-rewrite-porting`
 
@@ -47,6 +48,15 @@ Load this skill when you are:
 - embedding one native engine across multiple frontends
 - validating wrapper behavior separately from core native behavior
 
+## When to use `bioinformatics-single-pass-analytics`
+
+Load this skill when you are:
+
+- replacing repeated parsing/decompression passes with one fused native pass
+- designing counters, coverage engines, or summary kernels
+- emitting multiple validated outputs from one traversal
+- adding richer per-bin or per-interval statistics without losing semantic clarity
+
 ## Worked example direction
 
 A good example of the library-first approach is the kind of work done in `duckhts`:
@@ -73,5 +83,5 @@ pi update git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills
 If pinned, move explicitly to the current release:
 
 ```bash
-pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.1.0
+pi install git:github.com/sounkou-bioinfo/pi-rewrites-bio-skills@v0.2.0
 ```
